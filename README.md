@@ -27,6 +27,8 @@ A web-based platform that matches users with suitable job opportunities based on
   - `resumes` – Stores resume text or uploads
   - `skills` – Stores list of skills per user
   - `jobs` – Job entries with required skills
+  - 'Company' - Stores predefined company details 
+  - 'Courses' - additional part to give list of courses link
 
 ## 🚀 How to Run the Project
 
