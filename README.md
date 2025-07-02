@@ -22,13 +22,19 @@ A web-based platform that matches users with suitable job opportunities based on
 ## 🧩 Database Schema
 
 - **Database Name**: `p_job`
-- **Tables Used**:
-  - `users` – Stores user credentials
-  - `resumes` – Stores resume text or uploads
-  - `skills` – Stores list of skills per user
-  - `jobs` – Job entries with required skills
-  - 'Company' - Stores predefined company details 
-  - 'Courses' - additional part to give list of courses link
+📊 Tables Used
+users – Stores user credentials and personal details like name, email, password.
+
+resumes – Stores uploaded resume data (text or file reference) linked to users.
+
+skills – Contains a list of skills associated with each user.
+
+jobs – Stores job entries along with required skills and job details.
+
+company – Holds predefined company details including company name, job titles, and description.
+
+courses – Lists additional courses or learning resources (with links) suggested based on user’s skills or job gaps.
+
 
 ## 🚀 How to Run the Project
 
@@ -36,4 +42,35 @@ A web-based platform that matches users with suitable job opportunities based on
    ```bash
    git clone [https://github.com/yourusername/skill-job-matching.git](https://github.com/kavananagaraj03/SkillBasedJobMatching.git)
    cd SkillBasedJobMatching
-   python main.py
+Set Up Database:
+
+Open XAMPP and start Apache and MySQL.
+
+Go to http://localhost/phpmyadmin.
+
+Create a database named p_job.
+
+Import the .sql file (if you have one), or manually create tables (users, skills, jobs, etc.) as defined.
+
+Run the Backend:
+
+bash
+Copy
+Edit
+python main.py
+Access the Web App:
+Open your browser and go to: http://localhost:5000 (or whatever port is set).
+
+📁 Project Structure
+php
+Copy
+Edit
+project/
+│
+├── main.py                # Python backend logic and DB connections
+├── templates/             # HTML files (login.html, signup.html, dashboard.html)
+├── static/                # CSS, JS, images (if any)
+└── README.md              # You're reading it!
+
+🙋‍♂️ Author
+Kavanagh Nagaraj
