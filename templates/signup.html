@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('https://envato-shoebox-0.imgix.net/cda4/62a0-e059-405c-915d-8d3cbc1d86b0/4H1A1125.jpg?auto=compress%2Cformat&mark=https%3A%2F%2Felements-assets.envato.com%2Fstatic%2Fwatermark2.png&w=1000&fit=max&markalign=center%2Cmiddle&markalpha=18&s=ed848960a3c4fb2d617318a79f03cfae'); /* Replace 'https://example.com/background-image.jpg' with the URL of your desired background image */
+            background-size: cover; /* Cover the entire viewport */
+            background-repeat: no-repeat; /* Prevent the background image from repeating */
+            background-position: center; /* Center the background image */
+            padding-top: 60px; /* Adjust padding-top to accommodate the fixed navbar */
+        }
+        .navbar {
+            height: 80px; /* Increase navbar height */
+            background-color:  #3147b2; /* Change the background color to blue */
+        }
+        .navbar-brand {
+            font-size: 1.5rem; /* Increase font size for the brand */
+            margin-right: 30px; /* Add some margin for spacing */
+            color: #c7d1ff; /* Set text color to white */
+            font-weight: bold;
+          }
+
+        .jumbotron {
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+            border-radius: 15px; /* Rounded corners */
+            padding: 30px; /* Padding inside the jumbotron */
+        }
+
+        .jumbotron h4 {
+            background-color: #17a2b8; /* Background color for the heading */
+            color: white; /* Text color for the heading */
+            padding: 10px; /* Padding inside the heading */
+            border-radius: 10px; /* Rounded corners for the heading */
+            margin-bottom: 20px; /* Margin below the heading */
+        }
+
+        .form-group {
+            margin-bottom: 20px; /* Spacing between form groups */
+        }
+
+        label {
+            color: #17a2b8; /* Set label color */
+        }
+
+        .btn-primary {
+            background-color: #17a2b8; /* Change button background color */
+            border-color: #17a2b8; /* Change button border color */
+        }
+
+        .btn-primary:hover {
+            background-color: #138496; /* Darker background color on hover */
+            border-color: #138496; /* Darker border color on hover */
+        }
+
+        .btn-primary:focus {
+            box-shadow: 0 0 0 0.2rem rgba(23, 162, 184, 0.5); /* Add focus outline */
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand">N.M.K</a>
+    <a class="navbar-brand" href="/">HOME</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/about">About</a>
+            </li>
+            <!-- Dropdown -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Authentication
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="/signup">Signup</a>
+                    <a class="dropdown-item" href="/login">Login</a>
+                    <a class="dropdown-item" href="logout">Logout</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4 jumbotron">
+            <h4 class="text-center">Sign Up Here</h4>
+            <br>
+            <form method="POST" action="/signup" onsubmit="return validateForm()"> <!-- Specify the method and action for form submission -->
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username" name="username" required> <!-- Fix the id and name attributes -->
+                </div>
+                <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" required> <!-- Fix the id and name attributes -->
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" required> <!-- Fix the id and name attributes -->
+                     
+                </div>
+                <div class="form-group">
+                    <label for="contact">Contact</label>
+                    <input type="text" class="form-control" id="contact" name="contact" required> <!-- Add input field for contact -->
+                </div>
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <input type="text" class="form-control" id="address" name="address"> <!-- Add input field for address -->
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Signup</button>
+            </form>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</div>
+
+<script>
+    function validateForm() {
+        var contact = document.getElementById('contact').value;
+        var password = document.getElementById('password').value;
+
+        var contactPattern = /^\d{10}$/; // Pattern to match 10 digits for contact number
+
+        if (!contactPattern.test(contact)) {
+            alert("Contact number must be 10 digits.");
+            document.getElementById('contact').focus();
+            return false;
+        }
+
+        // Additional validation can be added here
+
+        return true;
+    }
+</script>
+
+<!-- Bootstrap JS and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Status</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ddbea5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            caret-color: hsl(228deg 4% 24% / 80%);
+        }
+        .navbar {
+            height: 80px; /* Increase navbar height */
+            background-color:  #3147b2; /* Change the background color to blue */
+        }
+        .navbar-brand {
+            font-size: 1.5rem; /* Increase font size for the brand */
+            margin-right: 30px; /* Add some margin for spacing */
+            color: #c7d1ff; /* Set text color to white */
+            font-weight: bold;
+        }
+        .container {
+            position: relative;
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: rgba(255, 255, 255, 0.8); /* Added opacity */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+            caret-color: hsl(228deg 4% 24% / 80%);
+        }
+        h1 {
+            text-align: center;
+            color: #555;
+        }
+        ul {
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+            font-style: italic; 
+        }
+        hr {
+            border: none;
+            border-top: 1px solid #ddd;
+            margin: 10px 0;
+        }
+        /* Style for video */
+        #video-background {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1000;
+        }
+    </style>
+</head>
+<body>
+    <!-- Video Background -->
+    <video autoplay muted loop id="video-background">
+        <source src={{ url_for('static', filename="status.mp4") }} type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand animated fadeInDown">N.M.K</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link animated fadeInDown" href="/course">Addition reference</a>
+                </li>
+                <!-- Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle animated fadeInDown" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Authentication
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="/logout">Logout</a> <!-- Corrected the logout route -->
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="container">
+        <h1>Catalyzing collaboration, shaping futures</h1>
+        <ul>
+            {% for user in matched_users %}
+            <li>User: {{ user.user_name }}</li>
+            <li>Company: {{ user.company_name }}</li>
+            <li>Contact: {{ user.contact }}</li>
+            <li>Address: {{ user.address }}</li>
+            <hr>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Include Bootstrap JavaScript library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

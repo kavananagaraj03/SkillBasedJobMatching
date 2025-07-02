@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            height: 80px; /* Increase navbar height */
+            background-color:  #3147b2; /* Change the background color to blue */
+        }
+        .navbar-brand {
+            font-size: 1.5rem; /* Increase font size for the brand */
+            margin-right: 30px; /* Add some margin for spacing */
+            color: #c7d1ff; /* Set text color to white */
+            font-weight: bold;
+        }
+        .container {
+            max-width: 600px;
+            margin: 120px auto; /* Adjusted margin to accommodate the navbar */
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="tel"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+        }
+        input[type="submit"] {
+            padding: 10px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        #video-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1;
+          }
+    </style>
+</head>
+<body>
+    <video autoplay muted loop id="video-bg">
+        <source src={{ url_for('static', filename="user.mp4") }} type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand animated fadeInDown">N.M.K</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle animated fadeInDown" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Authentication
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="/logout">Logout</a> <!-- Corrected the logout route -->
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>User Profile</h1>
+        <form action="/user" method="POST">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" value="{{ user_details.username }}" readonly>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" value="{{ user_details.email }}" readonly>
+
+            <label for="contact">Contact:</label>
+            <input type="tel" id="contact" name="contact" value="{{ user_details.contact }}" required>
+
+            <label for="address">Address:</label>
+            <textarea id="address" name="address" rows="4" required>{{ user_details.address }}</textarea>
+
+            <input type="submit" value="Update Profile">
+        </form>
+    </div>
+
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

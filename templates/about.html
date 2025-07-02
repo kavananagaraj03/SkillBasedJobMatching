@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <title>About</title>
+    <style>
+        /* Custom CSS styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #efe7cd;
+            color: #333;
+        }
+        .navbar-brand {
+            font-size: 24px;
+            font-weight: bold;
+            font-color: #c7d1ff;
+            height: 50px; 
+        }
+        .jumbotron {
+            background-image: url('https://t4.ftcdn.net/jpg/05/54/73/11/360_F_554731137_qf9Y00iCVy1HN8qOrbSn3P6jQ6j8LdQt.jpg');
+            background-size: cover;
+            color: #b43a65;
+            text-align: center;
+            padding: 100px 0;
+            animation-duration: 1s;
+            animation-delay: 0.5s;
+            animation-fill-mode: both;
+            opacity: 0;
+        }
+        .about-section {
+            background-color: #66545e;
+            color: #fff1e3;
+            border-radius: 10px;
+            padding: 50px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+            animation-duration: 1s;
+            animation-fill-mode: both;
+            opacity: 0;
+        }
+        .about-text {
+            font-size: 20px;
+            font-style: italic;
+            color:#d3edc0;
+        }
+        /* Animation classes */
+        .fadeInDown {
+            animation-name: fadeInDown;
+        }
+        .fadeInUp {
+            animation-name: fadeInUp;
+        }
+        @keyframes fadeInDown {
+            0% {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes fadeInUp {
+            0% {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+
+    <!-- Navigation bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand animated fadeInDown">N.M.K</a>
+        <a class="navbar-brand animated fadeInDown" href="/">HOME</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link animated fadeInDown" href="/about">About</a>
+                </li>
+                <!-- Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle animated fadeInDown" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Authentication
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="/signup">Signup</a>
+                        <a class="dropdown-item" href="/login">Login</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero section with jumbotron -->
+    <div class="jumbotron animated fadeInDown">
+        <div class="container">
+            <h1 class="display-5">Welcome to N.M.K</h1>
+            <p class="lead">We're on a mission to revolutionize the way you experience technology.</p>
+        </div>
+    </div>
+
+    <!-- About section -->
+    <div class="container about-section animated fadeInUp">
+        <h2 class="text-center mb-4">About Us</h2>
+        <p class="about-text text-justify">At N.M.K, we're more than just a company. We're a team of passionate individuals driven by innovation and creativity. Our mission is to bring cutting-edge solutions to the world, making life easier and more enjoyable for everyone.</p>
+        <p class="about-text text-justify">With a focus on user experience and customer satisfaction, we strive to deliver products and services that exceed expectations. From software development to digital marketing, we cover a wide range of areas to cater to diverse needs.</p>
+        <p class="about-text text-justify">Join us on this journey as we continue to push the boundaries of technology and shape the future together.</p>
+    </div>
+    
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Resume</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://envato-shoebox-0.imgix.net/6204/48b0-e041-41b6-aa30-aac3f6e9a145/DSC_0119+%289%29.jpg?auto=compress%2Cformat&mark=https%3A%2F%2Felements-assets.envato.com%2Fstatic%2Fwatermark2.png&w=1000&fit=max&markalign=center%2Cmiddle&markalpha=18&s=79c90720bd150e4f4b7337b15852cc56'); /* Replace 'https://example.com/background-image.jpg' with your actual image URL */
+            background-size: cover;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            height: 70px; /* Increase navbar height */
+            background-color:  #3147b2; /* Change the background color to blue */
+        }
+        .navbar-brand {
+            font-size: 1.5rem; /* Increase font size for the brand */
+            margin-right: 30px; /* Add some margin for spacing */
+            color: #c7d1ff; /* Set text color to white */
+            font-weight: bold;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: rgba(255, 255, 255, 0.8); /* Added background color with opacity */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        form {
+            text-align: center;
+        }
+        label {
+            font-weight: bold;
+            color: #555;
+        }
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #66545e;
+            border-radius: 5px;
+            resize: none;
+            font-size: 16px;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+        ul li {
+            color: #f4f4f400;
+        }
+        #video-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1;
+          }
+    </style>
+</head>
+<body>
+    <video autoplay muted loop id="video-bg">
+        <source src={{ url_for('static', filename="resume.mp4") }} type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand animated fadeInDown" href="#">N.M.K</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle animated fadeInDown" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Authentication
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="/logout">Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <h2>EMPOWER YOUR CAREER JOURNEY: Let Your Resume Speak Volumes</h2>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        <form method="post">
+            <label for="resume_details">Resume Details:</label><br>
+            <textarea id="resume_details" name="details" rows="20" placeholder="Craft your career narrative here... Impress us with your skills, experiences, and aspirations. Let your story shine through your resume details!">{% if existing_resume %}{{ existing_resume.r_detail }}{% endif %}</textarea><br>
+            <input type="submit" value="Next">
+        </form>
+    </div>
+    
+    <!-- Bootstrap JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
