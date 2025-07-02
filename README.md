@@ -73,4 +73,4 @@ project/
 └── README.md              # You're reading it!
 
 🙋‍♂️ Author
-Kavanagh Nagaraj
+Kavana Nagaraj
